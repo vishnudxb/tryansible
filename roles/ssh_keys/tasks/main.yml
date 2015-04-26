@@ -1,0 +1,6 @@
+---
+- name: Set up ssh keys for admin
+  authorized_key: user=admin
+                  key="{{ item }}"
+  with_file:
+    - key.pub

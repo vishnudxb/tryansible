@@ -1,0 +1,7 @@
+---
+ - name: update ssh keys
+   hosts: all
+   user: admin
+   roles:
+     - ssh_keys
+

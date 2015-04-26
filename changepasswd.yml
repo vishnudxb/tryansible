@@ -1,0 +1,18 @@
+---
+- hosts: all
+  user: root
+  vars:
+    - user: 'admin'
+    - password: 'password'
+ 
+  tasks:
+  - name: Create user admin
+    user:
+      name=admin
+      shell=/bin/bash
+      groups=admin,sudo
+      append=yes
+
+  - name: Setup | set user password
+    shell: usermod -p $(echo '{{ password }}' | openssl passwd -1 -stdin) {{ user }}
+    sudo: true
